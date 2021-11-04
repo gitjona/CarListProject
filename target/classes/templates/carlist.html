@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>CarList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css"rel="stylesheet"href="css/bootstrap.min.css"th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+	<h1>Cars</h1>
+	
+	<div class="container">
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<h3>Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	
+    <table class="table table-stripped">
+		<tr>
+		    <th>Make</th>
+		    <th>Model</th>
+		    <th>Power type</th>
+		    <th>Gearbox</th>
+		    <th>Price</th>
+		    <th>Year</th>
+		    <th>Kilometers</th>
+		    <th>Category</th>
+		    <th sec:authorize="hasRole('ADMIN')"></th>
+		</tr>  
+    	<tr th:each = "car : ${car}">
+    	
+    		<td th:text="${car.make}"></td>
+    		<td th:text="${car.model}"></td>
+    		<td th:text="${car.powerType}"></td>
+    		<td th:text="${car.gearbox}"></td>
+    		<td th:text="${car.price}"></td>
+    		<td th:text="${car.year}"></td>
+    		<td th:text="${car.kilometers}"></td>
+    		<td th:text="${car.category.name}"></td> 	
+    		
+    		<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/edit/{id}(id=${car.id})}" class="btn btn-warning">Edit</a></td>   
+			
+			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.id})}" class="btn btn-danger">Delete</a></td>
+		
+    	</tr>
+     </table>
+	 <td sec:authorize="hasRole('ADMIN')"><a href="/add" class="btn btn-success">Add Car</a></td>
+</body>
+</html>

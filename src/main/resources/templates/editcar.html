@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CarList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css"rel="stylesheet"href="css/bootstrap.min.css"th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+	<h1>Edit car</h1>
+	<div>
+		<form th:object="${car}" th:action="@{../save}" action="#" method="post">
+		
+			<input type="hidden" id="id" th:field="*{id}" />
+			
+		  	<label for="make">Make</label>
+			<input type="text" id="make" th:field="*{make}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="model">Model</label>
+			<input type="text" id="model" th:field="*{model}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="powerType">Power type</label>
+			<input type="text" id="powerType" th:field="*{powerType}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="gearbox">Gearbox</label>
+			<input type="text" id="gearbox" th:field="*{gearbox}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  			  	
+		  	<label for="price">Price</label>
+			<input type="text" id="price" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="year">Year</label>
+			<input type="text" id="year" th:field="*{year}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="kilometers">Kilometers</label>
+			<input type="text" id="kilometers" th:field="*{kilometers}" />
+			<div style="clear: both; display: block; height: 10px;"></div>	  	
+		  			  	
+		  	<label for="catlist">Category</label>
+			<select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+    		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+		
+		
+		
+	</div>
+</body>
+</html>

@@ -25,14 +25,14 @@ public class CarController
         return "carlist";
     }
     
-    // RESTful service to get all cars
+    // Get all cars
     @RequestMapping(value="/cars", method = RequestMethod.GET)
     public @ResponseBody List<Car> CarListRest()
     {	
         return (List<Car>) carRepo.findAll();
     }    
 
-	// RESTful service to get car by id
+	// Get car by id
     @RequestMapping(value="/car/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Car> findCarRest(@PathVariable("id") Long carId)
     {	

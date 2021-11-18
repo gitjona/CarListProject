@@ -32,7 +32,7 @@ public class CarListApplication
 			carRepo.save(new Car("Mercedes", "AMG", "Diesel", "Automatic", "100 000€", "10 000 km", "2018", catRepo.findByName("Other").get(0)));
 			carRepo.save(new Car("Nissan", "GTR", "Bensin", "Manual", "45 000€", "50 000 km", "2016", catRepo.findByName("Other").get(0)));
 			
-			log.info("fetch all books");
+			log.info("fetch all cars");
 			for (Car car : carRepo.findAll())
 			{
 				log.info(car.toString());

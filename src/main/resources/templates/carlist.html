@@ -16,9 +16,12 @@
 	</div>
 	<div class="col-md-4">
 		<h3>Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+		
+		<td sec:authorize="hasRole('ADMIN')"><img src="https://img.icons8.com/ios-filled/50/000000/admin-settings-male.png"/></td>
+
 	</div>
-	
     <table class="table table-stripped">
+    
 		<tr>
 		    <th>Make</th>
 		    <th>Model</th>
@@ -28,10 +31,11 @@
 		    <th>Year</th>
 		    <th>Kilometers</th>
 		    <th>Category</th>
-		    <th sec:authorize="hasRole('ADMIN')"></th>
+		    <th sec:authorize="hasRole('ADMIN')">Edit</th>
+		    <th sec:authorize="hasRole('ADMIN')">Delete</th>
 		</tr>  
     	<tr th:each = "car : ${car}">
-    	
+    
     		<td th:text="${car.make}"></td>
     		<td th:text="${car.model}"></td>
     		<td th:text="${car.powerType}"></td>
@@ -40,7 +44,7 @@
     		<td th:text="${car.year}"></td>
     		<td th:text="${car.kilometers}"></td>
     		<td th:text="${car.category.name}"></td> 	
-    		
+    		    		
     		<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/edit/{id}(id=${car.id})}" class="btn btn-warning">Edit</a></td>   
 			
 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.id})}" class="btn btn-danger">Delete</a></td>

@@ -32,7 +32,7 @@ public class CarRepositoryTest
     @Test
     public void createNewCar() 
     {    	    	
-    	Car car = new Car("Mercedes", "AMG", "Diesel", "Automatic", "100 000€", "10 000 km", "2018", new Category("Category"));
+    	Car car = new Car("Toyota", "Corolla", "Hybrid", "Automatic", "15 000€", "74 500 km", "2016", new Category("Category"));
     	repository.save(car);
     	assertThat(car.getId()).isNotNull();
     }    
